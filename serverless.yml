@@ -27,6 +27,8 @@ provider:
   lambdaHashingVersion: 20201221
   environment: 
     bucketName: ${self:custom.bucketName}
+    VER_TOKEN: ${param:token}
+    OAUTH_TOKEN: ${param:authtoken}
   iamRoleStatements:
     - Effect: Allow
       Action:

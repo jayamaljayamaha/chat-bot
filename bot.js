@@ -3,7 +3,7 @@
 ///import {getUserStep, setUserStep} from './UserSteps.js'
 const BotUtils = require('./BotUtils')
 const Slack = require('slack');
-const token = "l2c89Qp8ARF6VM8m7kYSFg1J";
+const token = process.env.VER_TOKEN;
 const bot_id = "U01LZ522N9J"
 
 let thread = "";
@@ -39,7 +39,7 @@ module.exports.runbot = async (data) => {
                         thread = dataObj.event.ts;
                         BotUtils.setUserStep(dataObj.event.user, 0);
                         const params = {
-                            token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                            token: process.env.OAUTH_TOKEN,
                             channel: dataObj.event.channel,
                             text: `Hello <@${dataObj.event.user}>, do you need to post your daily task? (yes/no)`,
                             thread_ts: dataObj.event.ts
@@ -53,7 +53,7 @@ module.exports.runbot = async (data) => {
                         if(step==0 ){
                             if(dataObj.event.text.toLowerCase()== "yes"){
                                 const params = {
-                                    token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                                    token: process.env.OAUTH_TOKEN,
                                     channel: dataObj.event.channel,
                                     text: "What is the project name?",
                                     thread_ts: thread
@@ -70,7 +70,7 @@ module.exports.runbot = async (data) => {
                                 let user_task_summary = BotUtils.getUserAllProjectData(dataObj.event.user)
 
                                 const params1 = {
-                                    token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                                    token: process.env.OAUTH_TOKEN,
                                     channel: dataObj.event.channel,
                                     text: user_task_summary,
                                     thread_ts: thread
@@ -79,7 +79,7 @@ module.exports.runbot = async (data) => {
                                 await Slack.chat.postMessage(params1);
 
                                 const params2 = {
-                                    token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                                    token: process.env.OAUTH_TOKEN,
                                     channel: dataObj.event.channel,
                                     text: "Ok then have a nice day, Good bye !!",
                                     thread_ts: thread
@@ -89,7 +89,7 @@ module.exports.runbot = async (data) => {
                             }
                             else if(dataObj.event.text.split(' ')[0].toLowerCase() !== "hello"){
                                 const params = {
-                                    token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                                    token: process.env.OAUTH_TOKEN,
                                     channel: dataObj.event.channel,
                                     text: "Sorry I cannot understand you, do you need to post your daily task? (yes/no)",
                                     thread_ts: thread
@@ -103,7 +103,7 @@ module.exports.runbot = async (data) => {
 
                         if(step==1){
                             const params = {
-                                token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                                token: process.env.OAUTH_TOKEN,
                                 channel: dataObj.event.channel,
                                 text: "Tell me the story number of task?",
                                 thread_ts: thread
@@ -115,7 +115,7 @@ module.exports.runbot = async (data) => {
 
                         if(step==2){
                             const params = {
-                                token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                                token: process.env.OAUTH_TOKEN,
                                 channel: dataObj.event.channel,
                                 text: "Tell me a description of your task?",
                                 thread_ts: thread
@@ -127,7 +127,7 @@ module.exports.runbot = async (data) => {
 
                         if(step==3){
                             const params = {
-                                token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                                token: process.env.OAUTH_TOKEN,
                                 channel: dataObj.event.channel,
                                 text: "Do you need to add another task? (yes/no)?",
                                 thread_ts: thread
@@ -141,7 +141,7 @@ module.exports.runbot = async (data) => {
 
                         if(step==4){
                             const params = {
-                                token: "xoxb-1692225498455-1751831409845-O8Sl1f9r1L7G3jdgVvDuqtyo",
+                                token: process.env.OAUTH_TOKEN,
                                 channel: dataObj.event.channel,
                                 text: "Sorry, session closed !!",
                                 thread_ts: thread
