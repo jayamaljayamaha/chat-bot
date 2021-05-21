@@ -21,18 +21,18 @@ To use that you need to add this bot to your slack group
 * AWS
 
 **Steps**
-First clone the project and install dependencies 
+* First clone the project and install dependencies 
 ```
 npm install
 ```
-Then create aws-node serverless project using serverless framework
+* Then create aws-node serverless project using serverless framework
 ```
 serverless create --template aws-nodejs --path taskbot
 ```
-Then create a new app in serverless framework and give Iam role
-Then configure service, app and org in serverless.yml file according to your new app
-Then create a new app in slack API
-Then set following scopes
+* Then create a new app in serverless framework and give Iam role
+* Then configure service, app and org in serverless.yml file according to your new app
+* Then create a new app in slack API
+* Then set following scopes
 ```
 app_mentions:read
 channels:history
@@ -40,14 +40,16 @@ chat:write
 users.profile:read
 users:read
 ```
-Then Install the app to workspace
-Then collect Bot User OAuth Token and Verification Token
-Then set those tokens to parameters section of app of serverless
-finally deploy the app
+* Then Install the app to workspace
+* Then collect Bot User OAuth Token and Verification Token
+* Then set those tokens to parameters section of app of serverless
+* finally deploy the app
 ```
 sls deploy
 ```
-
+**Contributing**
+* We would greatly appreciate any contribution you make.
+* If you have ideas for more functionality or recipes that should be on this project, llet us know.
 
 
 
